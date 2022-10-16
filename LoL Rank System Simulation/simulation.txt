@@ -1,0 +1,44 @@
+Something went wrong, please check your config.ini settings. Using default input for the following simulation.
+
+Simulated players: 10000
+Games played per player: 100
+Players' expected skill level: 200 LP from starting point
+LP per game: +-16
+Adjusting the players' chance to win after each game - Playing at a skill level of 650 LP above current rank results in a 91% chance to win (winning is 10 times as likely as losing)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Chance of winning first match: 67.00669%
+Average LP gained: 188
+
+Players who ended up within 50 LP of their expected skill level: 51.54%
+Players who ended up within 100 LP of their expected skill level: 82.99%
+Players who ended up within 150 LP of their expected skill level: 96.8%
+Players who ended up within 200 LP of their expected skill level: 99.82%
+Players who ended up within 250 LP of their expected skill level: 99.95%
+Players who ended up within 300 LP of their expected skill level: 100%
+
+Luckiest player: 63% win rate (416 LP)
+Unluckiest player: 47% win rate (-96 LP)
+Longest win streak: 18
+Longest losing streak: 16
+
+Players who were always 50 LP below their expected skill level: 3.21%
+Players who were always 100 LP below their expected skill level: 0.31%
+
+Final LP distribution:
+-96 LP - 0.01% (1 player) | 0.01% cumulated (1 player)
+-64 LP - 0.04% (4 players) | 0.05% cumulated (5 players)
+-32 LP - 0.05% (5 players) | 0.1% cumulated (10 players)
+0 LP - 0.41% (41 players) | 0.51% cumulated (51 players)
+32 LP - 1.37% (137 players) | 1.88% cumulated (188 players)
+64 LP - 3.49% (349 players) | 5.37% cumulated (537 players)
+96 LP - 7.48% (748 players) | 12.85% cumulated (1285 players)
+128 LP - 12.95% (1295 players) | 25.8% cumulated (2580 players)
+160 LP - 16.82% (1682 players) | 42.62% cumulated (4262 players)
+192 LP - 18.47% (1847 players) | 61.09% cumulated (6109 players)
+224 LP - 16.25% (1625 players) | 77.34% cumulated (7734 players)
+256 LP - 11.87% (1187 players) | 89.21% cumulated (8921 players)
+288 LP - 6.63% (663 players) | 95.84% cumulated (9584 players)
+320 LP - 2.84% (284 players) | 98.68% cumulated (9868 players)
+352 LP - 1% (100 players) | 99.68% cumulated (9968 players)
+384 LP - 0.24% (24 players) | 99.92% cumulated (9992 players)
+416 LP - 0.08% (8 players) | 100% cumulated (10000 players)

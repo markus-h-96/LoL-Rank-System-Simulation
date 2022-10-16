@@ -21,6 +21,8 @@ public class RankSystemSimulation {
 
 	public static void main(String args[]) {
 
+		String errorText = "";
+		
 		int totalPlayers = 10000;
 		int gamesPlayed = 100;
 		/*
@@ -76,7 +78,7 @@ public class RankSystemSimulation {
 
 		// if config.ini exists, try to parse
 		String jarPath;
-
+		
 		try {
 			jarPath = new File(RankSystemSimulation.class.getProtectionDomain().getCodeSource().getLocation().toURI())
 					.getParentFile().getPath();
@@ -97,25 +99,28 @@ public class RankSystemSimulation {
 
 					while ((line = br.readLine()) != null) {
 						// try setting key to value
-						line.strip();
+						line.trim();
 						for (int i = 0; i < keys.length; i++) {
 							if (line.startsWith(keys[i])) {
 //							System.out.println(line.substring(keys[i].length()).strip());
-								values[i] = Integer.parseInt(line.substring(keys[i].length()).strip());
+								values[i] = Integer.parseInt(line.substring(keys[i].length()).trim());
 								break;
 							}
 						}
 					}
 					br.close();
-					simulateGames(values[0], values[1], values[2], values[3], values[4], debug);
+					simulateGames(values[0], values[1], values[2], values[3], values[4], debug, errorText);
 
 				} catch (IOException | NumberFormatException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					errorText = "Something went wrong, please check your config.ini settings. Using default input for the following simulation.\n\n";
+//					e.printStackTrace();
+					simulateGames(totalPlayers, gamesPlayed, mmrDifferenceFromCorrectRank, lpPerGame,
+							mmrDifferenceForTenfoldWinrate, debug, errorText);
 				}
 			} else {
 				simulateGames(totalPlayers, gamesPlayed, mmrDifferenceFromCorrectRank, lpPerGame,
-						mmrDifferenceForTenfoldWinrate, debug);
+						mmrDifferenceForTenfoldWinrate, debug, errorText);
 			}
 		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
@@ -124,7 +129,7 @@ public class RankSystemSimulation {
 	}
 
 	static void simulateGames(int totalPlayers, int gamesPlayed, int mmrDifferenceFromCorrectRank, int lpPerGame,
-			int mmrDifferenceForTenfoldWinrate, boolean debug) {
+			int mmrDifferenceForTenfoldWinrate, boolean debug, String errorText) {
 
 		DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
 		DecimalFormat df = new DecimalFormat("#.#####", symbols);
@@ -451,6 +456,8 @@ public class RankSystemSimulation {
 
 		}
 
+		summary = errorText + summary;
+		
 		System.out.print(summary);
 
 		// path
@@ -465,7 +472,7 @@ public class RankSystemSimulation {
 
 			// summary (stats)
 			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(jarPath + "\\LoL Rank System Simulation\\simulation.csv"), "utf-8"))) {
+					new FileOutputStream(jarPath + "\\LoL Rank System Simulation\\simulation.txt"), "utf-8"))) {
 				writer.write(summary);
 				writer.close();
 			} catch (IOException ioe) {
