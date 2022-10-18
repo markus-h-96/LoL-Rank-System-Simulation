@@ -83,11 +83,11 @@ public class RankSystemSimulation {
 			jarPath = new File(RankSystemSimulation.class.getProtectionDomain().getCodeSource().getLocation().toURI())
 					.getParentFile().getPath();
 
-			if (new File(jarPath + "\\LoL Rank System Simulation\\config.ini")
+			if (new File(jarPath + "\\LoL Rank System Simulation Output\\config.ini")
 					.isFile()) {
 				try {
 					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(
-							jarPath +"\\LoL Rank System Simulation\\config.ini")));
+							jarPath +"\\LoL Rank System Simulation Output\\config.ini")));
 					String line;
 
 					String[] keys = new String[] { "simulated players = ", "games played = ",
@@ -468,11 +468,11 @@ public class RankSystemSimulation {
 
 			// creating files
 			// folder to put files inside
-			new File(jarPath + "\\LoL Rank System Simulation").mkdir();
+			new File(jarPath + "\\LoL Rank System Simulation Output").mkdir();
 
 			// summary (stats)
 			try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-					new FileOutputStream(jarPath + "\\LoL Rank System Simulation\\simulation.txt"), "utf-8"))) {
+					new FileOutputStream(jarPath + "\\LoL Rank System Simulation Output\\simulation.txt"), "utf-8"))) {
 				writer.write(summary);
 				writer.close();
 			} catch (IOException ioe) {
@@ -480,9 +480,9 @@ public class RankSystemSimulation {
 			}
 
 			// config
-			if (!new File(jarPath + "\\LoL Rank System Simulation\\config.ini").isFile()) {
+			if (!new File(jarPath + "\\LoL Rank System Simulation Output\\config.ini").isFile()) {
 				try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-						new FileOutputStream(jarPath + "\\LoL Rank System Simulation\\config.ini"), "utf-8"))) {
+						new FileOutputStream(jarPath + "\\LoL Rank System Simulation Output\\config.ini"), "utf-8"))) {
 					writer.write("simulated players = 10000" + "\ngames played = 100"
 							+ "\nlp difference from skill level = 200" + "\nlp per game (identical gain/loss) = 16"
 							+ "\nlp difference for tenfold winrate = 650");
@@ -493,9 +493,9 @@ public class RankSystemSimulation {
 			}
 
 			// readme
-			if (!new File(jarPath + "\\LoL Rank System Simulation\\readme.txt").isFile()) {
+			if (!new File(jarPath + "\\LoL Rank System Simulation Output\\readme.txt").isFile()) {
 				try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-						new FileOutputStream(jarPath + "\\LoL Rank System Simulation\\readme.txt"), "utf-8"))) {
+						new FileOutputStream(jarPath + "\\LoL Rank System Simulation Output\\readme.txt"), "utf-8"))) {
 					writer.write(
 							"This program simulates the outcome of League of Legends games and tracks the LP gained, win rates, win / loss streaks etc."
 									+ "\nYou can configure the settings in the config.ini, which you will find in the same folder as this file. "
@@ -516,7 +516,7 @@ public class RankSystemSimulation {
 									+ "\n   Thus, it is likely a very good estimate and probably shouldn't be changed (much).");
 
 					writer.close();
-					new File(jarPath + "\\LoL Rank System Simulation\\readme.txt").setReadOnly();
+					new File(jarPath + "\\LoL Rank System Simulation Output\\readme.txt").setReadOnly();
 				} catch (IOException ioe) {
 					System.out.println("Something went wrong3");
 				}
