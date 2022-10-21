@@ -90,9 +90,9 @@ public class RankSystemSimulation {
 							jarPath +"\\LoL Rank System Simulation Output\\config.ini")));
 					String line;
 
-					String[] keys = new String[] { "simulated players = ", "games played = ",
-							"lp difference from skill level = ", "lp per game (identical gain/loss) = ",
-							"lp difference for tenfold winrate = " };
+					String[] keys = new String[] { "simulated players", "games played",
+							"lp difference from skill level", "lp per game (identical gain/loss)",
+							"lp difference for tenfold winrate" };
 
 					int[] values = new int[] { totalPlayers, gamesPlayed, mmrDifferenceFromCorrectRank, lpPerGame,
 							mmrDifferenceForTenfoldWinrate };
@@ -101,9 +101,9 @@ public class RankSystemSimulation {
 						// try setting key to value
 						line.trim();
 						for (int i = 0; i < keys.length; i++) {
-							if (line.startsWith(keys[i])) {
-//							System.out.println(line.substring(keys[i].length()).strip());
-								values[i] = Integer.parseInt(line.substring(keys[i].length()).trim());
+							if (line.startsWith(keys[i] + "=") || line.startsWith(keys[i] + " =")) {
+//							System.out.println(line.substring(line.indexOf("=")+1));
+								values[i] = Integer.parseInt(line.substring(line.indexOf("=")+1).trim());
 								break;
 							}
 						}
